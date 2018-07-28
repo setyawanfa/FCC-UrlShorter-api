@@ -22,7 +22,7 @@ app.use(cors());
 
 /** this project needs to parse POST bodies **/
 // you should mount the body-parser here
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.use('/public', express.static(process.cwd() + '/public'));
@@ -38,6 +38,6 @@ app.get("/api/hello", function (req, res) {
 });
 
 
-app.listen(port, function () {
-  console.log('Node.js listening ...');
+var listener = app.listen(port, function () {
+  console.log('Node.js listening ...' + listener.address().port);
 });
